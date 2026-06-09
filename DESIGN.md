@@ -201,10 +201,10 @@ class Part(ABC, Generic[T]):
 
 ### Categories and registration
 
-Each category defines a **category-level config model** (Pydantic `BaseModel`). Concrete implementations subclass the category and register themselves automatically:
+Each category defines a **category-level config model** (`msgspec.Struct`). Concrete implementations subclass the category and register themselves automatically:
 
 ```python
-class TypeCheckerConfig(BaseModel):
+class TypeCheckerConfig(msgspec.Struct):
     strict: bool = True
 
 class TypeChecker(Part[TypeCheckerConfig]):
@@ -223,11 +223,11 @@ class BasedPyright(TypeChecker):
 
 For each part category, the resolved config is built as:
 
-1. Pydantic model defaults (hardcoded)
+1. `msgspec.Struct` field defaults (hardcoded)
 2. Merged with matching section from `~/.config/hewn/config.toml`
 3. Merged with any CLI flags targeting that category
 
-The resulting model instance is passed to the part on construction.
+The resulting struct instance is passed to the part on construction. `msgspec.convert` handles decoding and type coercion from the raw config dict.
 
 ### Context
 
