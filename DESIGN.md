@@ -120,16 +120,35 @@ hewn refuses to run if the directory contains anything other than `.git`.
 
 - Hatch build backend in `pyproject.toml`
 - GitHub Actions release workflow: triggered on `v*.*.*` tags, builds and publishes to PyPI via trusted publishing
-- README setup section covering:
-  1. Configuring the PyPI trusted publisher (OIDC, manual step)
-  2. Enabling GitHub Pages from Actions in repo settings
-  3. Updating the `github-pages` environment in repo settings to restrict deployments to `v*.*.*` tag pushes exclusively
 
 ### `library --entrypoint` additionally
 
 - `src/<name>/__main__.py`
 - `[project.scripts]` entry in `pyproject.toml`
 - `pdm run app` script
+
+---
+
+## README structure
+
+The generated `README.md` follows a fixed section order. All types share the base structure; libraries get additional sections.
+
+### All types
+
+1. `# <name>`: project title
+2. Placeholder description: "An awesome Python library/project to do awesome things"
+3. **Getting started**: how to install and run
+4. **Development**: how to set up the dev environment, available `pdm run` commands
+5. **Contributing**: pointer to `CONTRIBUTING.md`
+6. **License**: license name and pointer to `LICENSE`
+
+### `library` additionally
+
+- Badges row between the title and description: PyPI version, supported Python versions, license (shields.io)
+- README setup section covering:
+  1. Configuring the PyPI trusted publisher (OIDC, manual step)
+  2. Enabling GitHub Pages from Actions in repo settings
+  3. Updating the `github-pages` environment in repo settings to restrict deployments to `v*.*.*` tag pushes exclusively
 
 ---
 
