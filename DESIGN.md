@@ -114,6 +114,7 @@ hewn refuses to run if the directory contains anything other than `.git`.
 - `.github/PULL_REQUEST_TEMPLATE.md`
 - `.github/ISSUE_TEMPLATE/bug_report.md`
 - `.github/ISSUE_TEMPLATE/feature_request.md`
+- `renovate.json`: Renovate configuration, extending the `config:recommended` preset and with various additional settings enabled, such as "pinDigests".
 
 ### `library` additionally
 
@@ -242,9 +243,9 @@ The resulting struct instance is passed to the part on construction. `msgspec.co
 
 Documentation generation is a first-class optional feature.
 
-| Type      | Default       | Options     |
-|-----------|---------------|-------------|
-| `library` | zensical (on) | sphinx, off |
+| Type      | Default       | Options          |
+| --------- | ------------- | ---------------- |
+| `library` | zensical (on) | sphinx, off      |
 | `project` | off           | zensical, sphinx |
 
 When enabled, hewn generates:
